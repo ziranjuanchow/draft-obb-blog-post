@@ -22,14 +22,15 @@ and the north pole, which improves upon the bounding sphere:
 ![](quebec_comp.gif)
 
 In practice, for terrain tiles on the Cesium globe, we see anywhere between a 0%
-and 50% (usually 5-20%) reduction in number of tiles rendered, depending on the
+and 50% (typically around 10%) reduction in number of tiles rendered, depending on the
 camera view.
 
 | Tiles rendered      | [Directly downward](http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/index.html?view=120.34723663330078%2C15.138801611751108%2C10590.602601097456%2C360%2C-89.90326148519773%2C0) | [Toward horizon, low altitude](http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/index.html?view=120.28867831296651%2C15.087807528789323%2C4406.192801986939%2C46.14351181495515%2C-20.429229458524063%2C0.0742423709965139) | [Toward horizon, high altitude](http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/index.html?view=119.7954832286864%2C14.625866129373039%2C32421.396898129005%2C46.017725109639954%2C-21.092747155669294%2C0.07233855930825417) | [Below horizon](http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/index.html?view=-99.86107569851391%2C47.97316693251584%2C1160.1513943660475%2C314.5829070968285%2C-20.986424760513852%2C359.8538194959233) |
 |:------------------- | -----------------:| ----------------------------:| -----------------------------:| -------------:|
-| OrientedBoundingBox | 66 | 279 |  218 | 307 |
+| OrientedBoundingBox | 66 | 298 |  218 | 311 |
 | BoundingSphere      | 66 | 330 |  226 | 599 |
-| *improvement*       | 0% | 16% | 3.5% | 49% |
+| *improvement*       | 0% | 10% | 3.5% | 48% |
+(recorded at 1920x1080)
 
 The bounding box optimization turns out to provide the greatest benefits (around
 50% reduction) when the camera is looking down at an angle below the horizon.
