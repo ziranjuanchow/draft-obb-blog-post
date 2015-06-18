@@ -4,6 +4,9 @@ Oriented Bounding Boxes for Terrain and 3D Buildings
 This is a technical article on rendering work that I (Kai Ninomiya) have been
 working on as part of my internship at AGI.
 
+Overview
+--------
+
 In Cesium 1.11 (?), we will be releasing an improvement to the network and
 rendering performance of tiled data and other geometry.
 Cesium currently uses bounding spheres for view frustum culling, to
@@ -20,6 +23,9 @@ It even works fairly well for much larger tiles, such as this one between Quebec
 and the north pole, which improves upon the bounding sphere:
 
 ![](quebec_comp.gif)
+
+Results
+-------
 
 In practice, for terrain tiles on the Cesium globe, we see anywhere between a 0%
 and 50% (typically around 10%) reduction in number of tiles rendered, depending on the
@@ -50,7 +56,14 @@ Tiles rendered using oriented bounding boxes (307 tiles):
 
 ![](northdakota_box.jpg)
 
+Bounding Box Computation and Testing
+------------------------------------
+
 For terrain data, our current method for computing oriented bounding boxes is
 conceptually simple: create the bounding box in the local surface reference
 frame at the center of a tile, then compute the extents necessary to completely
-enclose the entire tile.
+enclose the entire tile. This is done once for each object (tile).
+
+TODO: sentence on OBB/frustum test
+
+TODO: CPU overhead of frustum test (if measurable in profiler)
